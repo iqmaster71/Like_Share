@@ -36,9 +36,8 @@ class InMemoryPostRepository : PostRepository {
     override fun share(postId: Long) {
         data.value = posts.map {
             if (it.id != postId) it
-            else it.copy(shared = it.shared + 1)
+            else it.copy(shared = it.shared++)
         }
-        data.value = posts
     }
 
     override fun delete(postId: Long) {
@@ -62,6 +61,6 @@ class InMemoryPostRepository : PostRepository {
     }
 
     private companion object {
-        const val GENERATED_POSTS_AMOUNT = 1000
+        const val GENERATED_POSTS_AMOUNT = 10
     }
 }

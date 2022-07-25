@@ -15,7 +15,6 @@
         android:contentDescription="@string/avatar_description"
         app:layout_constraintBottom_toBottomOf="@id/barrier2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/date"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
@@ -75,18 +74,45 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginBottom="@dimen/common_spacing"
         android:autoLink="web"
-        app:layout_constraintBottom_toTopOf="@id/barrier3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         tools:text="@sample/posts.json/data/content" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/videoContent"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_video_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/content" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_play_24"
+        app:layout_constraintBottom_toBottomOf="@id/videoContent"
+        app:layout_constraintEnd_toEndOf="@id/videoContent"
+        app:layout_constraintStart_toStartOf="@id/videoContent"
+        app:layout_constraintTop_toTopOf="@id/videoContent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="videoContent,play"
+        tools:visibility="visible" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="content" />
+        app:constraint_referenced_ids="videoContent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/favorite"
