@@ -4,7 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
 
-class InMemoryPostRepository : PostRepository {
+object InMemoryPostRepository : PostRepository {
+
+    private const val GENERATED_POSTS_AMOUNT = 100
 
     private var nextId = GENERATED_POSTS_AMOUNT.toLong()
 
@@ -60,7 +62,7 @@ class InMemoryPostRepository : PostRepository {
         }
     }
 
-    private companion object {
-        const val GENERATED_POSTS_AMOUNT = 10
+    override fun getById(postId: Long): Post? {
+        return posts.find { it.id == postId }
     }
 }
